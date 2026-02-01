@@ -3,5 +3,25 @@ layout: layout.liquid
 title: 11ty Boilerplate
 ---
 
-<h1>Yet Another 11ty <strong>Boilerplate</strong></h1>
-<img alt="pine" src="/images/pine.png" width="50" />
+{% comment %}
+sources:
+https://alpinejs.dev/directives/data
+https://alpinejs.dev/directives/text
+https://alpinejs.dev/directives/on
+{% endcomment %}
+
+<div 
+  x-data="{
+    names: ['Bob', 'Phil', 'Tyler', 'Joey', 'Clint', 'Vanessa', 'Amy', 'Sandra', 'Heather', 'Virginia'],
+    currentName: '',
+    pickRandom() {
+      const index = Math.floor(Math.random() * 10);
+      this.currentName = this.names[index];
+    }
+  }"
+>
+  <button @click="pickRandom()">Pick a Random Name</button>
+
+  <h1 x-text="currentName"></h1>
+</div>
+
